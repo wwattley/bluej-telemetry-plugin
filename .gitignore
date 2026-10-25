@@ -1,0 +1,11 @@
+# ---- Build Output ----
+target/
+
+# ---- IDEs ----
+.vscode/
+
+# ---- Plugin output while testing locally ----
+/bluej-telemetry/
+telemetry-session-*.json
+telemetry-session-*.pdf
+*.tmp
