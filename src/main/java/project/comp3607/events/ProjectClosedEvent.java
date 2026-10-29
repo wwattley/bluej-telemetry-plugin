@@ -4,7 +4,7 @@ import java.time.Instant;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-public class ProjectClosedEvent extends TelemetryEventWithDetail {
+public class ProjectClosedEvent extends TelemetryEventBase implements DetailsInterface {
     private final String project;
 
     public ProjectClosedEvent(int sequence, Instant timeStamp, String project) {

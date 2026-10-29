@@ -4,7 +4,7 @@ import java.time.Instant;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-public class CompileErrorEvent extends TelemetryEventWithDetail {
+public class CompileErrorEvent extends TelemetryEventBase implements DetailsInterface {
 
     private final String file;
     private final int line;

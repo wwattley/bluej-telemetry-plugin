@@ -4,7 +4,7 @@ import java.time.Instant;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-public class ClassDeletedEvent extends TelemetryEventWithDetail {
+public class ClassDeletedEvent extends TelemetryEventBase implements DetailsInterface {
     private final String project;
     private final String className;
 
