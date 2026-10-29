@@ -1,0 +1,11 @@
+package project.comp3607.events;
+
+import java.time.Instant;
+
+public class SessionEndEvent extends TelemetryEventBase {
+
+    public SessionEndEvent(int sequence, Instant timeStamp, EventType type) {
+        super(sequence, null, EventType.SESSION_END);
+    }
+
+}
