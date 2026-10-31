@@ -4,7 +4,7 @@ import java.time.Instant;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-public class CompileErrorEvent extends TelemetryEventBase implements DetailsInterface {
+public class CompileErrorEvent extends TelemetryEventBase {
 
     private final String file;
     private final int line;
@@ -21,6 +21,11 @@ public class CompileErrorEvent extends TelemetryEventBase implements DetailsInte
         this.message = message;
         this.category = category;
     }
+
+    public String getFile() { return file; }
+    public int getLine() { return line; }
+    public String getMessage() { return message; }
+    public ErrorCategory getCategory() { return category; }
 
     @Override
     public Map<String, Object> getDetails() {

@@ -5,7 +5,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.List;
 
-public class CompileSucceededEvent extends TelemetryEventBase implements DetailsInterface {
+public class CompileSucceededEvent extends TelemetryEventBase {
     private final List<String> files;
 
     public CompileSucceededEvent(int sequence, Instant timestamp, List<String> files) {
