@@ -3,7 +3,7 @@ package project.comp3607.export;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-
+import com.google.gson.Gson;
 
 public class JSONExporterStrategy implements ExporterStrategy {
 
@@ -11,12 +11,10 @@ public class JSONExporterStrategy implements ExporterStrategy {
     public File export(Object o) throws Exception {
         // Define the output file
         File file = new File("export.json");
-
+        Gson gson = new Gson();
         try (FileWriter writer = new FileWriter(file)) {
-            // NOTE: This is a placeholder.
-            // In a real app, you would use a library like Gson or Jackson
-            // to convert the object 'o' into a proper JSON string.
-            writer.write(o.toString());
+            // convert the object to a proper JSON string
+            gson.toJson(o, writer);
         } catch (IOException e) {
             throw new Exception("Failed to write JSON file", e);
         }
