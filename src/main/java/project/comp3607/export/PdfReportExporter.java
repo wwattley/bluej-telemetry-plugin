@@ -1,3 +1,5 @@
+package project.comp3607.export;
+
 import com.lowagie.text.*;
 import com.lowagie.text.pdf.PdfPTable;
 import com.lowagie.text.pdf.PdfWriter;
@@ -7,17 +9,20 @@ import org.jfree.data.general.DefaultPieDataset;
 
 import java.awt.image.BufferedImage;
 import java.io.FileOutputStream;
+import java.io.File;
+import java.util.Map;
 
 
 
-//package project.comp3607.export
 
 
 //implement the interface wiht openPDF and JChart to build the styled pages, tables and headers
 
 public class PdfReportExporter implements ExporterStrategy {
 
-    public void export(TelemetryReport jsonReport, String outputPath) throws Exception {
+    public void export(Object snapshot) throws Exception {
+        //TelemetryReport may have to change
+        TelemetryReport jsonReport = (TelemetryReport) snapshot;
         Document document = new Document(PageSize.A4);
         PdfWriter.getInstance(document, new FileOutputStream(outputPath));
         document.open();
@@ -50,11 +55,15 @@ public class PdfReportExporter implements ExporterStrategy {
             errorTable.addCell(String.valueOf(entry.getValue()));
         }
         document.add(errorTable);
+        PdfPTable timelineTable = new PdfPTable(3); // Seq, Type, Timestamp
+        timelineTable.addCell("Sequence");
+        timelineTable.addCell("Type");
+        timelineTable.addCell("Timestamp");
 
         // 4. Progression Timeline (Table of Events)
         document.add(new Paragraph("Event Timeline"));
-        PdfPTable timelineTable = new PdfPTable(3); // Seq, Type, Timestamp
-        for (EventRecord event : report.events) {
+
+        for (EventRecord event : jsonReport.events) {
             timelineTable.addCell(String.valueOf(event.seq));
             timelineTable.addCell(event.type);
             timelineTable.addCell(event.timestamp);
