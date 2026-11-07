@@ -10,10 +10,10 @@ import java.io.FileOutputStream;
 
 
 
-package project.comp3607.export
+//package project.comp3607.export
 
 
-
+//implement the interface wiht openPDF and JChart to build the styled pages, tables and headers
 
 public class PdfReportExporter implements ExporterStrategy {
 

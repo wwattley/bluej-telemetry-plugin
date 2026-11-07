@@ -6,5 +6,5 @@ public interface ExporterStrategy{
 
 
 
-    public File export(Object snapshot);
+    public File export(Object snapshot) throws Exception;
 }
