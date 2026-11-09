@@ -21,4 +21,6 @@ public class JSONExporterStrategy implements ExporterStrategy {
 
         return file;
     }
+     @Override
+      public String getFileExtension() { return "JSON"; }
 }

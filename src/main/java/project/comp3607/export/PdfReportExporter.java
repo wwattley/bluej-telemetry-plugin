@@ -20,11 +20,11 @@ import java.util.Map;
 
 public class PdfReportExporter implements ExporterStrategy {
 
-    public void export(Object snapshot) throws Exception {
+    public File export(Object snapshot) throws Exception {
         //TelemetryReport may have to change
         TelemetryReport jsonReport = (TelemetryReport) snapshot;
         Document document = new Document(PageSize.A4);
-        PdfWriter.getInstance(document, new FileOutputStream(outputPath));
+        PdfWriter.getInstance(document, new FileOutputStream("PDFOutput"));
         document.open();
 
         // 1. Title and Session Metadata
@@ -62,7 +62,7 @@ public class PdfReportExporter implements ExporterStrategy {
 
         // 4. Progression Timeline (Table of Events)
         document.add(new Paragraph("Event Timeline"));
-
+        //EventRecord may change also 
         for (EventRecord event : jsonReport.events) {
             timelineTable.addCell(String.valueOf(event.seq));
             timelineTable.addCell(event.type);
@@ -72,4 +72,6 @@ public class PdfReportExporter implements ExporterStrategy {
 
         document.close();
     }
+     @Override
+     public String getFileExtension() { return "PDF"; }
 }

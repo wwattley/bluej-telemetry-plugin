@@ -3,11 +3,11 @@ package project.comp3607.export;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-public class ClientContext {
+public class clientContext {
 
     @Test
     public void testExecuteExportThrowsExceptionIfNoStrategySet() {
-        ClientContext context = new ClientContext();
+        clientContext context = new clientContext();
 
         // Assert that calling export without a strategy throws an exception
         assertThrows(IllegalStateException.class, () -> {
@@ -17,7 +17,7 @@ public class ClientContext {
 
     @Test
     public void testExecuteExportCallsStrategy() throws Exception {
-        ClientContext context = new ClientContext();
+        clientContext context = new clientContext();
 
         // Create a dummy strategy that tracks if it was called
         class SpyStrategy implements ExporterStrategy {
@@ -26,6 +26,11 @@ public class ClientContext {
             public java.io.File export(Object snapshot) throws Exception {
                 wasCalled = true;
                 return new java.io.File("dummy.txt");
+            }
+            @Override
+            public String getFileExtension() {
+                // TODO Auto-generated method stub
+                throw new UnsupportedOperationException("Unimplemented method 'getFileExtension'");
             }
         }
 
